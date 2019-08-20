@@ -4,11 +4,7 @@ from urllib.parse import urlencode, quote_plus
 import http.client as http_client4
 from bs4 import BeautifulSoup
 from html.parser import HTMLParser
-from helper import *
-from webhandler import *
 
-## https://medium.com/deep-writing/how-to-write-with-artificial-intelligence-45747ed073c
-## https://stackoverflow.com/questions/35144685/how-to-vpn-proxy-connect-in-python
 
 hello = webSession()
 ### GET THE RAPPERS MAIYNNE
@@ -29,19 +25,19 @@ finally:
 #### LETS START SCRAPING, MAYN
 
 for name in hello.artists:
-    try:
+   try:
         artist_url = hello.concatURL(name)
         song_list = hello.getSongList(artist_url)
         counter = 0
         for song in song_list:
-            song_lyrics = getLyrics(song)
+            song_lyrics = hello.getLyrics(song)
             if song_lyrics == None:
                 pass
             else:
-                writeTextFile(song_lyrics, str(songList[counter][0]))
-            counter +=1
-    except Exception as err:
-        print('[ERR ]  Artist could not be parsed.')
-        print(str(err))
-    finally:
-        pass
+                writeTextFile(song_lyrics, str(song_list[counter][0]))
+                counter +=1
+   except Exception as err:
+       print('[ERR ]  Artist could not be parsed.')
+       print(str(err))
+   finally:
+       pass

@@ -19,7 +19,21 @@ class htmlStripper(HTMLParser):
     def get_data(self):
         return ''.join(self.fed)
 
+def removeHTML(innerHTML):
+    started=False
+    for i in innerHTML:
+        if i == '<':
+            started=True
+            temp_string = ''
+        if started:
+            temp_string+= i
+        if i == '>':
+            started=False
+            innerHTML=innerHTML.replace(temp_string,'')
+    return innerHTML
+
 def writeTextFile(songText, songName):
     with open("dataset.txt", "a") as txtFile:
+        txtFile.write(songName)
         txtFile.write(songText)
         txtFile.close()

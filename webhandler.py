@@ -8,8 +8,8 @@ class webSession:
             }
 
     def getArtists(self,url):
-        page = self.session.get(url, proxies = self.proxies)
-        self.scraper = BeautifulSoup(page.content,'html.parser')
+        page = self.session.get(url)
+        self.scraper = BeautifulSoup(page.text,'html.parser')
         for i in self.scraper.find_all('div',{'class':'div-col columns column-width'}):
             list_descendants = i.descendants
             for artist in list_descendants:
@@ -64,28 +64,28 @@ class webSession:
 
     def getSongList(self,url):
         song_list = []
-        page = self.session.get(url, proxies = self.proxies)
-        soup = BeautifulSoup(page,"html.parser")
+        page = self.session.get(url)
+        soup = BeautifulSoup(page.text,"html.parser")
         for song in soup.find_all('div',{'id':'listAlbum'}):
             for link in song.find_all('a'):
                 song_link=link.get('href')
                 song_name=link.get_text()
-                song_link=SongLink[3:]
+                song_link=song_link[3:]
                 generated_link='http://www.azlyrics.com/'+song_link
                 song_list.append((song_name,generated_link))
         return song_list
 
     def getLyrics(self,song_url):
         try:
-            page=self.session.get(song[1], proxies = self.proxies)
+            page=self.session.get(song[1])
         except Exception as msg:
             print("[ERR ] Cannot Navigate to link:  "+str(msg))
             print("[Cont] Skipping Song.")
         else:
-            soup=BeautifulSoup(page,'lxml')
+            soup=BeautifulSoup(page.text,'lxml')
             soup=soup.find_all('div', class_="")
             text=soup[1]
             text=str(text)
-            text=stripTags(text)
-            text=text.replace("<!-- Usage of azlyrics.com content by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->","")
+            text=removeHTML(text)
+            text=text.replace("<!-- Usage of azlyrics.com text by any third-party lyrics provider is prohibited by our licensing agreement. Sorry about that. -->","")
             return text
