@@ -1,0 +1,115 @@
+WARNING: Logging before flag parsing goes to stderr.
+W0821 18:49:24.119621 140297713465152 deprecation.py:323] From /usr/share/pyshared/Lyricist/model.py:27: BasicLSTMCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.LSTMCell, and will be replaced by that in Tensorflow 2.0.
+W0821 18:49:24.122212 140297713465152 deprecation.py:323] From /usr/share/pyshared/Lyricist/model.py:30: MultiRNNCell.__init__ (from tensorflow.python.ops.rnn_cell_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This class is equivalent as tf.keras.layers.StackedRNNCells, and will be replaced by that in Tensorflow 2.0.
+W0821 18:49:24.123084 140297713465152 deprecation_wrapper.py:119] From /usr/share/pyshared/Lyricist/model.py:32: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+W0821 18:49:24.231243 140297713465152 deprecation_wrapper.py:119] From /usr/share/pyshared/Lyricist/model.py:36: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+W0821 18:49:24.245295 140297713465152 deprecation_wrapper.py:119] From /usr/share/pyshared/Lyricist/model.py:39: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+W0821 18:49:24.247882 140297713465152 deprecation_wrapper.py:119] From /usr/share/pyshared/Lyricist/model.py:53: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+W0821 18:49:24.248323 140297713465152 deprecation_wrapper.py:119] From /usr/share/pyshared/Lyricist/model.py:54: The name tf.get_variable is deprecated. Please use tf.compat.v1.get_variable instead.
+
+W0821 18:49:24.248940 140297713465152 deprecation.py:506] From /usr/lib/python3.4/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+reading text file
+Traceback (most recent call last):
+  File "train.py", line 134, in <module>
+    main()
+  File "train.py", line 54, in main
+    train(args)
+  File "train.py", line 88, in train
+    model = Model(args)
+  File "/usr/share/pyshared/Lyricist/model.py", line 68, in __init__
+    outputs, last_state = legacy_seq2seq.rnn_decoder(inputs, self.initial_state, cell, loop_function=loop if infer else None, scope='rnnlm')
+  File "/usr/lib/python3.4/site-packages/tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py", line 152, in rnn_decoder
+    output, state = cell(inp, state)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/ops/rnn_cell_impl.py", line 248, in __call__
+    return super(RNNCell, self).__call__(inputs, state)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/layers/base.py", line 537, in __call__
+    outputs = super(Layer, self).__call__(inputs, *args, **kwargs)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/keras/engine/base_layer.py", line 634, in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/api.py", line 146, in wrapper
+    ), args, kwargs)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/api.py", line 423, in converted_call
+    experimental_optional_features=options.optional_features)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/api.py", line 524, in to_graph
+    return conversion.convert(entity, program_ctx)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/conversion.py", line 306, in convert
+    entity, program_ctx, free_nonglobal_var_names)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/conversion.py", line 229, in _convert_with_cache
+    entity, program_ctx)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/conversion.py", line 433, in convert_entity_to_ast
+    nodes, name, entity_info = convert_func_to_ast(o, program_ctx)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/conversion.py", line 624, in convert_func_to_ast
+    node = node_to_graph(node, context)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/impl/conversion.py", line 673, in node_to_graph
+    node = converter.apply_(node, context, conditional_expressions)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 380, in apply_
+    node = converter_module.transform(node, context)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/converters/conditional_expressions.py", line 38, in transform
+    node = ConditionalExpressionTransformer(ctx).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 301, in generic_visit
+    value = self.visit(value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 301, in generic_visit
+    value = self.visit(value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 301, in generic_visit
+    value = self.visit(value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 301, in generic_visit
+    value = self.visit(value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 310, in generic_visit
+    new_node = self.visit(old_value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 301, in generic_visit
+    value = self.visit(value)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/core/converter.py", line 317, in visit
+    return super(Base, self).visit(node)
+  File "/usr/lib/python3.4/site-packages/tensorflow/python/autograph/pyct/transformer.py", line 480, in visit
+    result = super(Base, self).visit(node)
+  File "/usr/lib64/python3.4/ast.py", line 245, in visit
+    return visitor(node)
+  File "/usr/lib64/python3.4/ast.py", line 299, in generic_visit
+    for value in old_value:
+KeyboardInterrupt
